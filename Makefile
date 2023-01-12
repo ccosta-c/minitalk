@@ -14,7 +14,7 @@
 Compiler = cc
 AR = ar -rc
 RM = rm -f
-CFlags = -Wall -Wextra -Werror
+CFlags = -Wall -Wextra -Werror -g
 PRINTF = printf/libftprintf.a
 CLIENT = client
 SERVER = server
