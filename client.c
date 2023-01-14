@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ccosta-c <ccosta-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:42:17 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/12 15:38:37 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/01/14 13:29:24 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void handler_client(unsigned char character, int pid)
 {
-	char	i;
+	int	i;
 
 	i = 0;
 	while (i < 8)
 	{
-		if ((character & (1 << i)))
-			kill(pid, SIGUSR1);
-		else
+		if ((character & (0b1 << i)) == 0)
 			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
 		i++;
-		usleep(200);
+		usleep(25000);
 	}
 }
 
