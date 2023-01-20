@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2023/01/04 13:33:23 by ccosta-c          #+#    #+#             */
+/*   Updated: 2023/01/18 15:34:28 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+int	ft_address(unsigned long address)
+{
+	int	count;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	if (!address)
+		return (ft_string("(nil)"));
+	count = 0;
+	count += ft_string("0x");
+	count += ft_hex(address, 'x');
+	return (count);
+}

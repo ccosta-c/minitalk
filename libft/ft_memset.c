@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2022/11/03 14:55:20 by ccosta-c          #+#    #+#             */
+/*   Updated: 2022/12/15 11:38:47 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t	i;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	i = 0;
+	while (n > i)
+	{
+		*(unsigned char *)(s + i) = c;
+		i++;
+	}
+	return (s);
+}

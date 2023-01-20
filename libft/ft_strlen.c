@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2022/11/03 14:26:13 by ccosta-c          #+#    #+#             */
+/*   Updated: 2022/12/15 11:39:57 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+size_t	ft_strlen(const char *s)
+{
+	int	i;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	i = 0;
+	while (s && *(s + i))
+		i++;
+	return (i);
+}

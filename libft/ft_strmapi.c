@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2022/11/17 14:49:15 by ccosta-c          #+#    #+#             */
+/*   Updated: 2022/12/15 11:39:59 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	int		i;
+	char	*ptr;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	i = 0;
+	if (!s || !f)
+	{
+		return (NULL);
+	}
+	ptr = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!ptr)
+	{
+		return (NULL);
+	}
+	while (s[i] != '\0')
+	{
+		ptr[i] = f(i, s[i]);
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}

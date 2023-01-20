@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2022/11/09 15:37:00 by ccosta-c          #+#    #+#             */
+/*   Updated: 2022/11/20 12:11:44 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+char	*ft_strrchr(const char *s, int c)
+{
+	int			i;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	i = ft_strlen(s);
+	s = (s + i);
+	while (*s && *s != c)
+	{
+		s--;
+	}
+	if (*s == c)
+	{
+		return ((char *)s);
+	}
+	return (0);
+}

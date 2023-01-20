@@ -6,24 +6,32 @@
 #    By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 16:09:28 by ccosta-c          #+#    #+#              #
-#    Updated: 2023/01/07 16:31:06 by ccosta-c         ###   ########.fr        #
+#    Updated: 2023/01/19 11:28:07 by ccosta-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Variables
-Compiler = cc
+
+NAME = minitalk.a
+COMPILER = cc
 AR = ar -rc
 RM = rm -f
-CFlags = -Wall -Wextra -Werror -g
-PRINTF = printf/libftprintf.a
+CFLAGS = -Wall -Wextra -Werror -g
+LIBFT = libft/libft.a
 CLIENT = client
 SERVER = server
 
 all: $(CLIENT) $(SERVER)
 
 $(CLIENT):
-	 @make -C printf
-	$(Compiler) $(CFlags) client.c $(PRINTF) -o $(CLIENT)
+	 @make -C libft
+	$(COMPILER) $(CFLAGS) client.c $(LIBFT) -o $(CLIENT)
 
 $(SERVER):
-	$(Compiler) $(CFlags) server.c $(PRINTF) -o $(SERVER)
+	$(Compiler) $(CFLAGS) server.c $(LIBFT) -o $(SERVER)
+
+clean:
+	$(RM) 
+
+fclean: clean
+	$(RM)  

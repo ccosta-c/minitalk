@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccosta-c <ccosta-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:42:17 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/14 13:29:24 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:48:54 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,26 @@ void handler_client(unsigned char character, int pid)
 		else
 			kill(pid, SIGUSR1);
 		i++;
-		usleep(25000);
+		usleep(400);
 	}
-}
+	};
 
 int	main(int argc, char** argv)
 {
 	int	i;
 	int pid;
 
-	pid = atoi(argv[2]);
+	pid = ft_atoi(argv[1]);
 	i = 0;
 	if (argc != 3)
 	{
-		ft_printf("WROOOOOOONG!\nTry ./server [MESSAGE] [PID]");	
+		ft_printf("Wrong input, the command is './client [PID] [MESSAGE]'");	
 	}
 	else
 	{
-		while (argv[1][i] != '\0')
+		while (argv[2][i] != '\0')
 		{
-			handler_client(argv[1][i], pid);
+			handler_client((unsigned char)argv[2][i], pid);
 			i++;
 		}
 	}

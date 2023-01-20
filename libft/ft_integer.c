@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_integer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2022/12/16 11:59:06 by ccosta-c          #+#    #+#             */
+/*   Updated: 2023/01/18 15:34:23 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+int	ft_integer(long nb)
+{
+	int		count;
+	char	*base;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	base = "0123456789";
+	count = 0;
+	if (nb < 0)
+	{
+		nb *= -1;
+		count += ft_char('-');
+	}
+	if (nb >= 10)
+	{
+		count += ft_integer(nb / 10);
+		count += ft_integer(nb % 10);
+	}
+	if (nb < 10)
+	{
+		count += ft_char(*(base + nb));
+	}
+	return (count);
+}

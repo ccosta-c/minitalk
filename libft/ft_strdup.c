@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2022/11/15 13:45:22 by ccosta-c          #+#    #+#             */
+/*   Updated: 2022/12/15 11:38:30 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+char	*ft_strdup(const char *s)
+{
+	size_t	len;
+	char	*copy;
+	size_t	i;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	i = 0;
+	len = ft_strlen(s);
+	copy = malloc(sizeof(char) * (len + 1));
+	if (!copy)
+	{
+		return (0);
+	}
+	ft_memcpy(copy, s, (len + 1));
+	return (copy);
+}

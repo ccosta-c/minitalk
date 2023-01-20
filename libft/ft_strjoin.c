@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2022/11/15 19:08:10 by ccosta-c          #+#    #+#             */
+/*   Updated: 2022/12/15 11:38:24 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*str;
+	size_t	len;
+	int		i;
+	int		j;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	len = (ft_strlen(s1) + ft_strlen(s2));
+	str = ft_calloc(sizeof(char), (len + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s1 && *(s1 + i))
+	{
+		*(str + i) = *(s1 + i);
+		i++;
+	}
+	j = 0;
+	while (*(s2 + j) && s2)
+	{
+		*(str + i++) = *(s2 + j++);
+	}
+	*(str + i) = '\0';
+	return (str);
+}

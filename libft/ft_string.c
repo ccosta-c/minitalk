@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_string.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2023/01/04 10:52:40 by ccosta-c          #+#    #+#             */
+/*   Updated: 2023/01/18 15:36:42 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+int	ft_string(char *str)
+{
+	int	count;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	count = 0;
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (*str)
+	{
+		count += ft_char(*str);
+		str++;
+	}
+	return (count);
+}

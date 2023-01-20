@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   serverbonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:39:14 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/19 11:30:45 by ccosta-c         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:49:54 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int	main(int argc, char** argv)
 	{
 		ft_printf("WROOOOOOONG!");	
 	}		
-	ft_printf("PID is %d\n",getpid());
-	signal(SIGUSR1, handler_server);
-	signal(SIGUSR2, handler_server);
+	ft_printf("Server Started.\nThe PID is %d\n",getpid());
 	while (1)
 	{
 		pause();
+		signal(SIGUSR1, handler_server);
+		signal(SIGUSR2, handler_server);
 	}
 	return (0);
 }

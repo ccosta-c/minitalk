@@ -1,46 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   clientbonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:39:14 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/19 11:30:45 by ccosta-c         ###   ########.fr       */
+/*   Created: 2023/01/07 15:42:17 by ccosta-c          #+#    #+#             */
+/*   Updated: 2023/01/19 13:49:05 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-void handler_server(int signal)
+void handler_client(unsigned char character, int pid)
 {
-	static unsigned char	character;
-	static int				i;
+	int	i;
 
-	if (signal == SIGUSR1)
-		character |= (0b1 << i);
-	i++;
-	if (i == 8)
+	i = 0;
+	while (i < 8)
 	{
-		ft_printf("%c", character);
-		i = 0;
-		character = 0;
+		if ((character & (0b1 << i)) == 0)
+		{
+			kill(pid, SIGUSR2);
+		}
+		else
+		{
+			kill(pid, SIGUSR1);
+		}
+		i++;
+		usleep(250);
 	}
 }
 
 int	main(int argc, char** argv)
 {
-	(void)argv;
-	if (argc != 1)
+	int	i;
+	int pid;
+
+	pid = ft_atoi(argv[1]);
+	i = 0;
+	if (argc != 3)
 	{
-		ft_printf("WROOOOOOONG!");	
-	}		
-	ft_printf("PID is %d\n",getpid());
-	signal(SIGUSR1, handler_server);
-	signal(SIGUSR2, handler_server);
-	while (1)
+		ft_printf("Wrong input, the command is './client [PID] [MESSAGE]'");	
+	}
+	else
 	{
-		pause();
+		while (argv[2][i] != '\0')
+		{
+			handler_client((unsigned char)argv[2][i], pid);
+			i++;
+		}
 	}
 	return (0);
 }

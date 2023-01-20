@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccosta-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 15:40:20 by ccosta-c          #+#    #+#             */
-/*   Updated: 2023/01/18 15:40:31 by ccosta-c         ###   ########.fr       */
+/*   Created: 2022/11/10 11:46:19 by ccosta-c          #+#    #+#             */
+/*   Updated: 2022/12/15 11:39:54 by ccosta-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include "libft/libft.h"
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char	*str;
+	size_t			i;
+	unsigned char	chr;
 
-void handler_client(unsigned char character, int pid);
-void handler_server(int signal);
-
-#endif
+	chr = c;
+	str = (unsigned char *)s;
+	i = 0;
+	while (str[i] != chr && (i < (n - 1)))
+	{
+		i++;
+	}
+	if (str[i] == chr)
+	{
+		return (&str[i]);
+	}
+	return (0);
+}
