@@ -22,7 +22,7 @@ void handler_server(int signal)
 	i++;
 	if (i == 8)
 	{
-		ft_printf("%c", character);
+		write(1, &character, 1);
 		i = 0;
 		character = 0;
 	}

@@ -49,7 +49,8 @@ clean:
 
 fclean: clean
 	make fclean -C libft
-	$(RM) $(NAME)
+	$(RM) $(CLIENT)
+	$(RM) $(SERVER)
 
 re: fclean all
 

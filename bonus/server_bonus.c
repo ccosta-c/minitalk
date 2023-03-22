@@ -25,7 +25,7 @@ void handler_server(int signal, siginfo_t *info, void *ucontext)
 	{
 		if (character == '\0')
 			kill(info->si_pid, SIGUSR1);
-		ft_printf("%c", character);
+		write(1, &character, 1);
 		i = 0;
 		character = 0;
 	}
