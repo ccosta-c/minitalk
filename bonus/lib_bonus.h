@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H_BONUS
-# define LIB_H_BONUS
+#ifndef LIB_BONUS_H
+# define LIB_BONUS_H
 
 # include <stdlib.h>
 # include <stdio.h>

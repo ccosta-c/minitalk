@@ -12,7 +12,7 @@
 
 #include "lib_bonus.h"
 
-void handler_server(int signal, siginfo_t *info, void *ucontext)
+void	handler_server(int signal, siginfo_t *info, void *ucontext)
 {
 	static unsigned char	character;
 	static int				i;
@@ -31,18 +31,16 @@ void handler_server(int signal, siginfo_t *info, void *ucontext)
 	}
 }
 
-int	main(int argc, char** argv)
+int	main(int argc, char **argv)
 {
+	struct sigaction	usr;
+
 	(void)argv;
-	struct sigaction usr;
 	usr.sa_sigaction = &handler_server;
 	usr.sa_flags = SA_SIGINFO;
-
 	if (argc != 1)
-	{
-		ft_printf("No arguments needed for this command.");	
-	}		
-	ft_printf("PID is %d.\n",getpid());
+		ft_printf("\033[1;31mNo arguments needed for this command.\033[0m\n");
+	ft_printf("PID is %d.\n", getpid());
 	sigaction(SIGUSR1, &usr, NULL);
 	sigaction(SIGUSR2, &usr, NULL);
 	while (1)

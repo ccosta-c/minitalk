@@ -12,7 +12,7 @@
 
 #include "lib_bonus.h"
 
-void handler_client(char character, int pid)
+void	handler_client(char character, int pid)
 {
 	int	i;
 
@@ -33,18 +33,17 @@ void	message_received(int signal, siginfo_t *info, void *ucontext)
 	(void)signal;
 	(void)info;
 	(void)ucontext;
-	printf("Message Received!\n");
+	ft_printf("\033[1;32mMESSAGE RECEIVED!\033[0m\n");
 }
 
-int	main(int argc, char** argv)
+int	main(int argc, char **argv)
 {
-	int	i;
-	int server_pid;
-	struct sigaction sms;
+	int					i;
+	int					server_pid;
+	struct sigaction	sms;
+
 	if (argc != 3)
-	{
-		ft_printf("Wrong input, the command is ./client [PID] [MESSAGE].");	
-	}
+		ft_printf("\033[1;31mThe command is ./client [PID] [MESSAGE]\033[0m\n");
 	else
 	{
 		i = 0;

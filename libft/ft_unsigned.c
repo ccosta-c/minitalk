@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-
 int	ft_unsigned(unsigned int nb)
 {
 	int		count;

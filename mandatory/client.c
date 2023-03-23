@@ -12,7 +12,7 @@
 
 #include "lib.h"
 
-void handler_client(char character, int pid)
+void	handler_client(char character, int pid)
 {
 	int	i;
 
@@ -26,16 +26,14 @@ void handler_client(char character, int pid)
 		i++;
 		usleep(400);
 	}
-	};
+}
 
-int	main(int argc, char** argv)
+int	main(int argc, char **argv)
 {
 	int	i;
 
 	if (argc != 3)
-	{
-		ft_printf("Wrong input, the command is ./client [PID] [MESSAGE].");	
-	}
+		ft_printf("\033[1;31mThe command is ./client [PID] [MESSAGE]\033[0m\n");
 	else
 	{
 		i = 0;

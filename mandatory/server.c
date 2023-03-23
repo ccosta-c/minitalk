@@ -12,7 +12,7 @@
 
 #include "lib.h"
 
-void handler_server(int signal)
+void	handler_server(int signal)
 {
 	static unsigned char	character;
 	static int				i;
@@ -28,17 +28,15 @@ void handler_server(int signal)
 	}
 }
 
-int	main(int argc, char** argv)
+int	main(int argc, char **argv)
 {
-	(void)argv;
-	struct sigaction usr;
-	usr.sa_handler = &handler_server;
+	struct sigaction	usr;
 
+	(void)argv;
+	usr.sa_handler = &handler_server;
 	if (argc != 1)
-	{
-		ft_printf("No arguments needed.");	
-	}		
-	ft_printf("PID is %d\n",getpid());
+		ft_printf("\033[1;31mNo arguments needed.\033[0m\n");
+	ft_printf("PID is %d\n", getpid());
 	sigaction(SIGUSR1, &usr, NULL);
 	sigaction(SIGUSR2, &usr, NULL);
 	while (1)

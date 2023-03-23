@@ -19,7 +19,7 @@
 # include <signal.h>
 # include "../libft/libft.h"
 
-void handler_client(char character, int pid);
-void handler_server(int signal);
+void	handler_client(char character, int pid);
+void	handler_server(int signal);
 
 #endif
